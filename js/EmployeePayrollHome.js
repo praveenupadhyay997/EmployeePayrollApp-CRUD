@@ -31,7 +31,7 @@ const createInnerHtml = () => {
           <td>${getDeptHtml(empPayrollData._department)}
           </td>
           <td>${empPayrollData._salary}</td>
-          <td>${empPayrollData._startDate}</td>
+          <td>${stringifyDate(empPayrollData._startDate)}</td>
           <td><img id="${
             empPayrollData._id
           }" onclick= "remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
@@ -85,3 +85,21 @@ const getDeptHtml = (deptList) => {
   }
   return deptHtml;
 };
+
+/// UC1 -- Remove the employee data from the local storage
+ const remove= (node)=>{
+  /// Finding whether the data is present in the employee payroll list or not
+  let empPayrollData= empPayrollList.find(empData=>empData._id=node.id);
+  /// Finding whether the element is found or not in the local storage of the employee salary list
+  if(!empPayrollData) return;
+  /// Finding the index position of the employee payroll data in the employee payroll list using map and index method
+  const index= empPayrollList.map(empData=>empData._id).indexOf(empPayrollData.id);
+  /// Deleting the found data from the employee salary list(Not from the local storage till)
+  empPayrollList.splice(index-1,1);
+  /// Pushing the updated data to the local storage- updation => deleting the passed node
+  localStorage.setItem("EmployeePayrollList",JSON.stringify(empPayrollList));
+  /// Count is updated on the web page so as to see the changed count
+  document.querySelector(".emp-count").textContent= empPayrollList.length;
+  /// Using the create inner html to display the tabular data on the home webpage
+  createInnerHtml();
+} 
