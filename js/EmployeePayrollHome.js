@@ -58,6 +58,7 @@ const getEmployeePayrollDataFromStorage = () => {
     : [];
 };
 /// Creating a JSON Object for fetching data from the server
+/// Default json file for test of the home page in early use cases
 const createEmployeePayrollJSON = () => {
   let empPayrollListLocal = [
     {
@@ -97,6 +98,7 @@ const remove = (node) => {
   let empPayrollData = empPayrollList.find(
     (empData) => (empData._id = node.id)
   );
+  /// Alert pop up to check if the user accidently pressed the button or is sure to delete the employee payroll data
   var result = confirm("Want to delete the data for Employee : " + empPayrollData._name);
   if (result) {
     /// Finding whether the element is found or not in the local storage of the employee salary list
