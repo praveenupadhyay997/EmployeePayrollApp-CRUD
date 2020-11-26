@@ -23,7 +23,7 @@
     </header>
         <!--UC 2 Creating Form Header Section with employee detail and employee name input text box-->
     <div class="form-content">
-        <form autocomplete = "off" class="form" action="#" onsubmit="save();" onreset="resetForm();">
+        <form autocomplete = "off" class="form" action="#" onsubmit="save(event)" onreset="resetForm()">
             <div class="form-head">Employee Payroll form</div>
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
@@ -151,7 +151,7 @@
         <!--UC6 -- Adding notes input section and buttons for submit, cancel and reset-->
         <div class="row-content">
             <label class="label text" for ="Notes" >Notes</label>
-            <textarea id="notes" name="Notes" class="input" placeholder="" stye="height:100px"></textarea>
+            <textarea id="notes" name="Notes" class="input" placeholder="Enter a note..." stye="height:100px"></textarea>
         </div> 
         <div class="button-content">
             <a href="./EmployeePayrollApp.html" class="resetButton button cancelButton">Cancel</a>
@@ -163,6 +163,8 @@
         </div>
         <script src="../js/EmployeePayrollClass.js"></script>
         <script src="../js/EmployeePayrollApp.js"></script>
+        <script src="../js/utility.js"></script>
+        <script src="../js/site_properties.js"></script>
     </form>
 </body>
 </html>
