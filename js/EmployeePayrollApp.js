@@ -4,15 +4,20 @@ let isUpdate = false;
 let employeePayrollObj = {};
 
 /// To be executed after loading the DOM content- Document Object Model i.e. the webpage
+/// Attaching an event handler for the load of DOM content 
 window.addEventListener("DOMContentLoaded", (event) => {
 
   const name = document.querySelector("#name");
   const textError = document.querySelector(".name-error");
+  /// Add event handler to the name field of the main page
   name.addEventListener("input", function () {
+    /// If name is empty i.e. user did not entered any value no error message
     if (name.value.length == 0) {
       textError.textContent = "";
       return;
     }
+    /// Else validate the name and then print the specified error message to the screen
+    /// Error message specified in the event by internally validating to the setter in EmployeePayRoll Class
     try {
       new EmployeePayRoll().name = name.value;
       textError.textContent = "";
@@ -113,9 +118,12 @@ function createAndUpdateStorage() {
     if (!empPayrollData) {
       employeePayrollList.push(createEmployeePayrollData());
     } else {
+      /// Using map array helper function to mention the instance with the identified node id
+      /// Getting the index of the element using index array helper function
       const index = employeePayrollList
         .map((empData) => empData._id)
         .indexOf(empPayrollData._id);
+      /// Removing the element from the list once update request is passed
       employeePayrollList.splice(
         index,
         1,
